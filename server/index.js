@@ -27,11 +27,11 @@ class Koa {
             let fn = this.middleWares[id]
             fn(ctx, () => dispatch(id+1))
         }
-        dispatch(0)
+        dispatch.call(this, 0)
     }
 
     requestHandle (req, res) {
-        const ctx = genContext(req, res)
+        const ctx = this.genContext(req, res)
         this.middlwareHandle(ctx)
     }
 

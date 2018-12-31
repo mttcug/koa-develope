@@ -12,5 +12,6 @@ router.get('/home', controller.home)
 
 
 app.use(router.routes())
+
 app.listen(3000)
 

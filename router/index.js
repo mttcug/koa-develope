@@ -34,16 +34,16 @@ class Route {
     }
 
     routes (ctx, next) {
-        console.log('ooooooooooooooooooooooooo:', ctx)
-        let matches = []
-        this.layers.forEach((item, i) => {
-            if (item.url === ctx.url) {
-                matches.push(item)
-            }
-        })
-        this.executeRequest(matches, ctx, next)
+        return async (ctx, next) => {
+            let matches = []
+            this.layers.forEach((item, i) => {
+                if (item.url === ctx.url) {
+                    matches.push(item)
+                }
+            })
+            this.executeRequest(matches, ctx, next)
+        }
     }
-
 }
 
 module.exports = Route
