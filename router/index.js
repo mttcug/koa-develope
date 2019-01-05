@@ -25,7 +25,7 @@ class Route {
 
     executeRequest (matches, ctx, next) {
         function dispatch (id) {
-            if (id === matches.length) return
+            if (id === matches.length) return next()
             let fn = matches[id].controller
             fn(ctx, next)
             dispatch(id+1)
